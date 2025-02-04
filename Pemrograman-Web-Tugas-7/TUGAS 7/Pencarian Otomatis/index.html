@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pencarian Kode Pos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Pencarian Kode Pos Indonesia</h1>
+      <form action="" id="form-pos">
+        <label for="provinsi">Provinsi</label>
+        <select name="provinsi" id="provinsi">
+          <option value="">Pilih Provinsi</option>
+        </select>
+
+        <label for="kabupaten">Kabupaten/Kota</label>
+        <select name="kabupaten" id="kabupaten">
+          <option value="">Pilih Kabupaten/Kota</option>
+        </select>
+
+        <label for="kecamatan">Kecamatan</label>
+        <select name="kecamatan" id="kecamatan">
+          <option value="">Pilih Kecamatan</option>
+        </select>
+
+        <button type="button" id="search-btn">Cari Kode Pos</button>
+      </form>
+    </div>
+
+    <div id="result" class="result"></div>
+
+    <script>
+      const data = [
+        {
+          provinsi: "Jawa Timur",
+          kabupaten: "Surabaya",
+          kecamatan: "Genteng",
+          kode_pos: "60275",
+          informasi: "Genteng, Surabaya, Jawa Timur",
+        },
+        {
+          provinsi: "Sumatera Utara",
+          kabupaten: "Medan",
+          kecamatan: "Medan Baru",
+          kode_pos: "20153",
+          informasi: "Medan Baru, Medan, Sumatera Utara",
+        },
+        {
+          provinsi: "Sumatera Barat",
+          kabupaten: "Padang",
+          kecamatan: "Padang Barat",
+          kode_pos: "25111",
+          informasi: "Padang Barat, Padang, Sumatera Barat",
+        },
+        {
+          provinsi: "Kalimantan Timur",
+          kabupaten: "Balikpapan",
+          kecamatan: "Balikpapan Kota",
+          kode_pos: "76111",
+          informasi: "Balikpapan Kota, Balikpapan, Kalimantan Timur",
+        },
+        {
+          provinsi: "Kalimantan Barat",
+          kabupaten: "Pontianak",
+          kecamatan: "Pontianak Selatan",
+          kode_pos: "78121",
+          informasi: "Pontianak Selatan, Pontianak, Kalimantan Barat",
+        },
+      ];
+
+      const provinsiSelect = document.getElementById("provinsi");
+      const kabupatenSelect = document.getElementById("kabupaten");
+      const kecamatanSelect = document.getElementById("kecamatan");
+      const resultDiv = document.getElementById("result");
+      const searchButton = document.getElementById("search-btn");
+
+      const loadProvinsi = () => {
+        const provinsiSet = new Set(data.map((item) => item.provinsi));
+        provinsiSet.forEach((provinsi) => {
+          const option = document.createElement("option");
+          option.value = provinsi;
+          option.textContent = provinsi;
+          provinsiSelect.appendChild(option);
+        });
+      };
+
+      provinsiSelect.addEventListener("change", () => {
+        kabupatenSelect.innerHTML =
+          '<option value="">Pilih Kabupaten/Kota</option>';
+        kecamatanSelect.innerHTML = '<option value="">Pilih Kecamatan</option>';
+        const kabupatenSet = new Set(
+          data
+            .filter((item) => item.provinsi === provinsiSelect.value)
+            .map((item) => item.kabupaten)
+        );
+        kabupatenSet.forEach((kabupaten) => {
+          const option = document.createElement("option");
+          option.value = kabupaten;
+          option.textContent = kabupaten;
+          kabupatenSelect.appendChild(option);
+        });
+      });
+
+      kabupatenSelect.addEventListener("change", () => {
+        kecamatanSelect.innerHTML = '<option value="">Pilih Kecamatan</option>';
+        const kecamatanSet = new Set(
+          data
+            .filter(
+              (item) =>
+                item.provinsi === provinsiSelect.value &&
+                item.kabupaten === kabupatenSelect.value
+            )
+            .map((item) => item.kecamatan)
+        );
+        kecamatanSet.forEach((kecamatan) => {
+          const option = document.createElement("option");
+          option.value = kecamatan;
+          option.textContent = kecamatan;
+          kecamatanSelect.appendChild(option);
+        });
+      });
+
+      searchButton.addEventListener("click", () => {
+        const kecamatan = kecamatanSelect.value;
+        const result = data.find(
+          (item) =>
+            item.provinsi === provinsiSelect.value &&
+            item.kabupaten === kabupatenSelect.value &&
+            item.kecamatan === kecamatan
+        );
+        if (result) {
+          resultDiv.innerHTML = `<strong>Kode Pos:</strong> ${result.kode_pos}<br><strong>Informasi:</strong> ${result.informasi}`;
+        } else {
+          resultDiv.textContent = "Data tidak ditemukan!";
+        }
+      });
+
+      loadProvinsi();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Dropdown List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+      }
+
+      label {
+        display: block;
+        margin: 15px 0 5px;
+        font-weight: bold;
+        color: #555;
+      }
+
+      select {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 15px 0 5px;
+        margin-left: 50px;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+        
+      }
+
+      #selection {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #e9ecef;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        color: #333;
+        max-width: 400px;
+        margin-left: 30px;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Pilih Provinsi</h1>
+
+      <label for="provinsi">Provinsi:</label>
+      <select name="provinsi" id="provinsi">
+        <option value="">Pilih Provinsi</option>
+      </select>
+
+      <label for="kabupaten">Kabupaten/Kota:</label>
+      <select name="kabupaten" id="kabupaten">
+        <option value="">Pilih Kabupaten/Kota</option>
+      </select>
+
+      <button onclick="show()">Tampilkan Pilihan</button>
+
+      <div id="selection"></div>
+    </div>
+
+    <script>
+      const data = {
+        "Jawa Timur": ["Surabaya", "Malang", "Sidoarjo"],
+        "DKI Jakarta": ["Jakarta Pusat", "Jakarta Selatan", "Jakarta Timur"],
+        Bali: ["Denpasar", "Badung", "Gianyar"],
+      };
+
+      const provinsiSelect = document.getElementById("provinsi");
+      const kabupatenSelect = document.getElementById("kabupaten");
+      const selectionDiv = document.getElementById("selection");
+
+      Object.keys(data).forEach((provinsi) => {
+        const option = document.createElement("option");
+        option.value = provinsi;
+        option.textContent = provinsi;
+        provinsiSelect.appendChild(option);
+      });
+
+      provinsiSelect.addEventListener("change", () => {
+        kabupatenSelect.innerHTML =
+          '<option value="">Pilih Kabupaten/Kota</option>';
+
+        const selectedProvinsi = provinsiSelect.value;
+
+        if (selectedProvinsi) {
+          const kabupatenList = data[selectedProvinsi];
+          kabupatenList.forEach((kabupaten) => {
+            const option = document.createElement("option");
+            option.value = kabupaten;
+            option.textContent = kabupaten;
+            kabupatenSelect.appendChild(option);
+          });
+        }
+      });
+
+      function show() {
+        const provinsi = provinsiSelect.value;
+        const kabupaten = kabupatenSelect.value;
+
+        if (provinsi && kabupaten) {
+          selectionDiv.textContent = `Anda memilih Provinsi: ${provinsi}, Kabupaten/Kota: ${kabupaten}`;
+        } else {
+          selectionDiv.textContent =
+            "Pastikan Anda memilih provinsi dan kabupaten/kota";
+        }
+      }
+    </script>
+  </body>
+</html>

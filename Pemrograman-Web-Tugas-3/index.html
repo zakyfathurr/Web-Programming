@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Latihan Form</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        font-size: medium;
+        background-color: rgba(35, 35, 174, 0.481);  
+    }
+    form {
+        max-width: 500px;
+        /* text-align: center; */
+        margin:auto;
+        margin-top: 50px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color:aliceblue;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type=text], input[type=email], textarea {
+        /* width:auto; */
+        /* padding: 12px 20px; */
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-size: medium;
+    }
+    select{
+        /* width: 100%; */
+        /* padding: 12px 20px; */
+        margin: 4px 0;
+        display: inline-block;
+        border: 1px solid #ccc; /* untuk garis border*/
+        box-sizing: border-box;
+        border-radius: 5px; /* untuk lengkungan border*/
+    }
+    option{
+        padding: 8px 16px;
+        text-decoration: none;
+        display: block;
+        border: none;
+        cursor: pointer;
+        color: black;
+        background-color: #f1f1f1;
+    }
+    input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        padding: 8px 30px;
+    }
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+    .text-center{
+        text-align: center;
+        font-size: large;
+        margin-bottom: 10px;
+    }
+
+</style>
+
+<body>
+    <form action="/submit_form" method="post">
+    <p class="text-center"><b>Student Registration Form</b></p>
+    <table>
+        <tr>
+            <td >Firstname </td><td> : </td>
+            <td> <input type="text" name="nama" required></td>
+        </tr>
+        <tr>
+            <td><label>Middlename </label></td><td> : </td>
+            <td><input type="text" name="Middlename"</td>
+        </tr>
+        <tr>
+            <td><label>Lastname </label></td><td> : </td>
+            <td><input type="text" name="Lastname" required></td>
+        </tr>
+        <tr>
+            <td>Course</td><td> : </td>
+            <td><select>name = "Course" 
+                <option value="Web Development">Web Development</option>
+                <option value="Mobile Development">Mobile Development</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+            </select></td>
+        </tr>
+    </table>
+    Gender : <br>
+    <input type="radio" id="male" name="gender" value="male">Male<br>
+    <input type="radio" id="female" name="gender" value="female">Female<br>
+    <input type="radio" id="other" name="gender" value="other">Other<br>
+    Phone :   
+    <input type="text" name="country code"  value="+62" maxlength="3" size="1"/>   
+    <input type="text" name="phone" maxlength="16" size="15"/> <br> <br>  
+
+    Address :<br>
+    <textarea rows="3" cols="60"></textarea>
+    <table>
+        <tr>
+            <td>Email</td><td> : </td>
+            <td><input type="email" name="email" value="YourEmail@gmail.com" placeholder></td>
+        </tr>
+        <tr>
+            <td>Password</td><td> : </td>
+            <td><input type="password" name="password" placeholder="Password"></td>
+        </tr>
+        <tr></tr>
+            <td>Re-type Password</td><td> : </td>
+            <td><input type="password" name="confirmPassword" placeholder="Re-type Password"></td>
+        </tr>
+    </table>
+
+    <p class="text-center"> <input  type="submit" value="Submit"></p>
+    
+</form>
+</body>
+</html>
