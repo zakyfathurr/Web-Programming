@@ -1,0 +1,138 @@
+/* Gaya umum */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f3f1f1d5;
+}
+
+/* Header */
+h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+h3 {
+    font-size: 22px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Container untuk profil */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+/* Mengatur teks di dalam kontainer agar berada di tengah */
+.container .text {
+    text-align: center;
+}
+
+
+.container img {
+    margin-right: 20px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.text {
+    max-width: 600px;
+    
+    
+}
+
+.text p {
+    margin: 5px 0;
+    margin-bottom: 10px;
+}
+
+/* Gaya tabel */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.styled-table thead tr {
+    background-color: #4CAF50;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Gaya list untuk skills */
+.skills-list {
+    list-style-type: none;
+    padding: 0;
+    font-size: 18px;
+}
+
+.skills-list li {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.skill-name {
+    width: 150px;
+    font-weight: bold;
+}
+
+.skill-level {
+    font-style: italic;
+    color: gray;
+}
+
+/* Gaya untuk link di bagian hobbies */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+ul li{
+    font-size: large;
+    /* display: inline-block; */
+    margin-bottom: 5px;
+}
+ul li a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Gaya untuk about me */
+.textarea {
+    background-color: #fff;
+    padding: 20px;
+    font-size: medium;
+    border: 1px solid #ddd;
+    border-left: 5px solid #4CAF50;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
